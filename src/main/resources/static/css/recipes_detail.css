@@ -1,0 +1,173 @@
+@font-face {
+    font-family: 'GowunDodum-Regular';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/GowunDodum-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+.recipe-container {
+    padding: 20px;
+    position: relative;
+    max-width: 900px;
+    min-height: 1500px;
+    margin: 0 auto;
+}
+
+.foodimg {
+    position: relative;
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.foodimg p {
+    font-family: 'GowunDodum-Regular', serif;
+    font-style: normal;
+    font-size: 25px;
+    margin-top: 10px;
+    text-align: left;
+}
+
+.recipe-image img,
+.recipe-image video {
+    width: 100%;
+    height: auto;
+    border-radius: 15px;
+    display: block;
+    margin: 0 auto;
+}
+
+.icon-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+    padding: 0 10px;
+}
+
+.icon-left {
+    display: flex;
+    align-items: center;
+}
+
+.icon-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.rating {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.share img,
+.bookmark img {
+    width: 25px;
+    height: auto;
+    cursor: pointer;
+}
+
+/* 부족한 재료 가지러 가기 */
+.material-link {
+    position: absolute;
+    font-family: 'NanumMyeongjo';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 19px;
+    color: #000000;
+    text-decoration: none;
+    text-align: right;
+    right: 15px;
+    top : 25px;
+}
+
+/* Accordion */
+.details {
+    font-family: 'GowunDodum-Regular', serif;
+    font-style: normal;
+    position: absolute;
+    margin-top : 50px;
+    width: 97%;
+}
+
+.detail-tap1 p,
+.detail-tap2 p {
+    font-family: 'GowunDodum-Regular', serif;
+    font-style: normal;
+    font-size: 30px;
+    margin-top: 10px;
+    text-align: left;
+    margin-bottom: 5px;
+}
+
+.detail-tap2 p {
+    margin-top: 30px;
+}
+
+.detail-tap1 {
+    margin-bottom: 2px;
+}
+
+/* Accordion Item */
+.details .toggle-button,
+.details .content {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 16px;
+    gap: 8px;
+    background: #FFFFFF;
+    border: 1px solid #D9D9D9;
+    border-radius: 8px;
+}
+
+.details .content {
+    display: none;
+    background: #F5F5F5;
+    width: 100%;
+}
+
+.toggle-button {
+    margin-bottom: 3px;
+}
+
+.btn {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0px;
+    gap: 8px;
+    width: 100%;
+    cursor: pointer;
+    background: none;
+    border: none;
+    text-align: left;
+}
+
+.btn img {
+    width: 20px;
+    height: 20px;
+    margin-left: auto;
+}
+
+.content {
+    padding: 10px;
+    margin-bottom: 30px;
+}
+
+.content p {
+    font-size: 15px;
+}
+
+.link {
+    position: absolute;
+    margin-top: 10px;
+    color: #007bff;
+    text-decoration: none;
+}
+
+.link:hover {
+    text-decoration: underline;
+}
