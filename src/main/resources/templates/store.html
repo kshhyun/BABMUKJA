@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>밥 묵자 - 스토어</title>
+    <link rel="stylesheet" href="css/Top_ui.css">
+    <link rel="stylesheet" href="css/store.css">
+</head>
+<body>
+<header>
+    <div class="header-container">
+        <div class="logo">
+            <p>밥 묵자</p>
+            <img src="images/rice_bowl.png" alt="밥 묵자 로고">
+        </div>
+        <nav>
+            <ul class="menu">
+                <li><a href="#">레시피</a></li>
+                <li class="selected"><a href="store.html">스토어</a></li>
+                <li><a href="#">오늘 뭐 먹지?</a></li>
+            </ul>
+        </nav>
+    </div>
+    <hr class="divider">
+    <div id="dropdown-content" class="dropdown-content">
+        <p id="user-email">bab@naver.com</p>
+        <hr>
+        <a href="#" class="edit-info">정보 수정</a>
+        <div class="dropdown-buttons">
+            <div class="combined-buttons">
+                <a th:href="@{/bookmark}" class="bookmark-btn"><img th:src="@{/images/bookmark_n.png}" alt="책갈피 아이콘"> 책갈피</a>
+                <a th:href="@{/logout}" class="logout-btn"><img th:src="@{/images/Logout.png}" alt="로그아웃 아이콘"> 로그아웃</a>
+            </div>
+        </div>
+    </div>
+</header>
+<main>
+    <section class="meal-kit-section">
+        <div class="nav-bar">
+            <div class="nav">
+                <span class="nav-item default" data-target="ingredient">식재료</span> |
+                <span class="nav-item inactive" data-target="mealkit">밀키트</span>
+            </div>
+        </div>
+        <div class="description">
+            <p>당신의 냉장고를 풍성하게 채워줄 제품들을 찾아보세요.</p>
+        </div>
+        <div class="filters">
+            <button class="btn-select">기본 정렬 순</button>
+            <ul class="list">
+                <li><button type="button">기본 정렬 순</button></li>
+                <li><button type="button">가격 낮은 순</button></li>
+                <li><button type="button">가격 높은 순</button></li>
+            </ul>
+        </div>
+        <div class="product-grid">
+            <a href="https://www.coupang.com/np/search?component=&q=밀푀유나베" class="product" target="_blank">
+                <div class="product-img">
+                    <img src="images/Rectangle 40.png" alt="밀푀유나베">
+                </div>
+                <p class="product-name">밀푀유나베</p>
+                <p class="price">24,000원</p>
+                <p class="discount"><span class="discount-rate">-17%</span> <span class="discount-price">19,900원</span></p>
+            </a>
+            <a href="https://www.coupang.com/np/search?component=&q=천지양+맛간장+백목이버섯" class="product" target="_blank">
+                <div class="product-img">
+                    <img src="images/Rectangle 41.png" alt="천지양 맛간장 백목이버섯">
+                </div>
+                <p class="product-name">천지양 맛간장 백목이버섯</p>
+                <p class="price">24,000원</p>
+                <p class="discount"><span class="discount-rate">-17%</span> <span class="discount-price">19,900원</span></p>
+            </a>
+            <a href="https://search.shopping.naver.com/search/all?query=단짠고추장+우삼겹+덮밥" class="product" target="_blank">
+                <div class="product-img">
+                    <img src="images/Rectangle 42.png" alt="단짠고추장 우삼겹 덮밥">
+                </div>
+                <p class="product-name">단짠고추장 우삼겹 덮밥</p>
+                <p class="price">24,000원</p>
+                <p class="discount"><span class="discount-rate">-17%</span> <span class="discount-price">19,900원</span></p>
+            </a>
+            <a href="https://search.shopping.naver.com/search/all?query=직화요리+생오소고기" class="product" target="_blank">
+                <div class="product-img">
+                    <img src="images/Rectangle 43.png" alt="직화요리 생오소고기">
+                </div>
+                <p class="product-name">직화요리 생오소고기</p>
+                <p class="price">24,000원</p>
+                <p class="discount"><span class="discount-rate">-17%</span> <span class="discount-price">19,900원</span></p>
+            </a>
+            <a href="https://www.coupang.com/np/search?component=&q=마라탕" class="product" target="_blank">
+                <div class="product-img">
+                    <img src="images/Rectangle 44.png" alt="마라탕">
+                </div>
+                <p class="product-name">마라탕</p>
+                <p class="price">24,000원</p>
+                <p class="discount"><span class="discount-rate">-17%</span> <span class="discount-price">19,900원</span></p>
+            </a>
+            <a href="https://www.coupang.com/np/search?component=&q=꼬리찜" class="product" target="_blank">
+                <div class="product-img">
+                    <img src="images/Rectangle 45.png" alt="꼬리찜">
+                </div>
+                <p class="product-name">꼬리찜</p>
+                <p class="price">24,000원</p>
+                <p class="discount"><span class="discount-rate">-17%</span> <span class="discount-price">19,900원</span></p>
+            </a>
+            <a href="https://www.coupang.com/np/search?component=&q=돼지갈비" class="product" target="_blank">
+                <div class="product-img">
+                    <img src="images/Rectangle 46.png" alt="돼지갈비">
+                </div>
+                <p class="product-name">돼지갈비</p>
+                <p class="price">24,000원</p>
+                <p class="discount"><span class="discount-rate">-17%</span> <span class="discount-price">19,900원</span></p>
+            </a>
+            <a href="https://www.coupang.com/np/search?component=&q=밀푀유나베" class="product" target="_blank">
+                <div class="product-img">
+                    <img src="images/Rectangle 47.png" alt="밀푀유나베">
+                </div>
+                <p class="product-name">밀푀유나베</p>
+                <p class="price">24,000원</p>
+                <p class="discount"><span class="discount-rate">-17%</span> <span class="discount-price">19,900원</span></p>
+            </a>
+            <a href="https://www.coupang.com/np/search?component=&q=해물탕" class="product" target="_blank">
+                <div class="product-img">
+                    <img src="images/Rectangle 48.png" alt="해물탕">
+                </div>
+                <p class="product-name">해물탕</p>
+                <p class="price">24,000원</p>
+                <p class="discount"><span class="discount-rate">-17%</span> <span class="discount-price">19,900원</span></p>
+            </a>
+            <a href="https://www.coupang.com/np/search?component=&q=고등어" class="product" target="_blank">
+                <div class="product-img">
+                    <img src="images/Rectangle 49.png" alt="고등어">
+                </div>
+                <p class="product-name">고등어</p>
+                <p class="price">24,000원</p>
+                <p class="discount"><span class="discount-rate">-17%</span> <span class="discount-price">19,900원</span></p>
+            </a>
+            <a href="https://www.coupang.com/np/search?component=&q=밀푀유나베" class="product" target="_blank">
+                <div class="product-img">
+                    <img src="images/Rectangle 50.png" alt="밀푀유나베">
+                </div>
+                <p class="product-name">밀푀유나베</p>
+                <p class="price">24,000원</p>
+                <p class="discount"><span class="discount-rate">-17%</span> <span class="discount-price">19,900원</span></p>
+            </a>
+            <a href="https://www.coupang.com/np/search?component=&q=냉우동" class="product" target="_blank">
+                <div class="product-img">
+                    <img src="images/Rectangle 51.png" alt="냉우동">
+                </div>
+                <p class="product-name">냉우동</p>
+                <p class="price">24,000원</p>
+                <p class="discount"><span class="discount-rate">-17%</span> <span class="discount-price">19,900원</span></p>
+            </a>
+        </div>
+    </section>
+</main>
+<script src="js/store.js"></script>
+<script src="js/Top_ui.js"></script>
+</body>
+</html>
