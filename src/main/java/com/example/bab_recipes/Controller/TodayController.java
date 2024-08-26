@@ -32,8 +32,8 @@ public class TodayController {
     }
 
     @PostMapping("/search")
-    public String todayEatSearch(@RequestParam(required = false) String fridgeTags,
-                                 @RequestParam(required = false) String excludeTags,
+    public String todayEatSearch(@RequestParam(value = "fridgeTags", required = false) String fridgeTags,
+                                 @RequestParam(value = "excludeTags", required = false) String excludeTags,
                                  HttpSession session) {
         session.removeAttribute("fridgeItems");
         session.removeAttribute("excludedItems");

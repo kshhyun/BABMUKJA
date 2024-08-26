@@ -37,16 +37,16 @@ document.addEventListener('DOMContentLoaded', function (){
     })
 
 
-    //북마크가 설정되어있는지 확인하는 함수
-    var bookmarkIcon = document.getElementById('bookmark-icon');
-    var isBookmark = parseInt(document.querySelector('#isBook').value);  // 1 = true, 0 = false
-
-    // 페이지 로드 시 북마크 상태를 반영
-    if (isBookmark === 1) {
-        bookmarkIcon.src = bookmarkFilledSrc;
-    } else {
-        bookmarkIcon.src = bookmarkSrc;
-    }
+    // //북마크가 설정되어있는지 확인하는 함수
+    // var bookmarkIcon = document.getElementById('bookmark-icon');
+    // var isBookmark = parseInt(document.querySelector('#isBook').value);  // 1 = true, 0 = false
+    // console.log(isBookmark)
+    // // 페이지 로드 시 북마크 상태를 반영
+    // if (isBookmark === 1) {
+    //     bookmarkIcon.src = bookmarkFilledSrc;
+    // } else {
+    //     bookmarkIcon.src = bookmarkSrc;
+    // }
 
 
 })
