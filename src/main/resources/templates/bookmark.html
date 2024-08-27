@@ -39,58 +39,50 @@
     </header>
 
     <main>
-
         <section class="recipe-section">
             <div class="recipe-header">
-                <h2>북마크</h2>
-                <div class="sort-options">
-                    <span class="sort-option active" id="sort-high">별점 높은 순</span>
-                    <span class="sort-option" id="sort-low">별점 낮은 순</span>
+                <p>북마크</p>
+                <div class="filter-bar">
+                    <span class="category active">전체보기</span>
+                    <span class="category">한식</span>
+                    <span class="category">양식</span>
+                    <span class="category">일식</span>
+                    <span class="category">중식</span>
+                    <span class="category">분식</span>
+                    <span class="category">퓨전</span>
+                    <span class="category">밑반찬</span>
+                    <span class="category">야식</span>
+                    <span class="category">다이어트</span>
+                    <span class="category">베이킹</span>
+                    <span class="category">채식</span>
                 </div>
             </div>
 
-            <div class="filter-bar">
-                <span class="category active">한식</span>
-                <span class="category">양식</span>
-                <span class="category">일식</span>
-                <span class="category">중식</span>
-                <span class="category">아시안</span>
-                <span class="category">치킨~~~</span>
-            </div>
+            <div class="recipe-grid">
+                <!-- RecipeDTO 리스트를 순회하여 레시피 항목 생성 -->
+                <div th:each="recipe : ${recipes}" class="recipe-item">
+                    <input type="hidden" th:value="${recipe.id}">
+                    <!-- 이미지 파일인 경우 -->
+                    <div th:if="${#strings.endsWith(recipe.mediaUrl, '.jpg') or #strings.endsWith(recipe.mediaUrl, '.jpeg') or #strings.endsWith(recipe.mediaUrl, '.png')}">
+                        <img th:src="${recipe.mediaUrl}" th:alt="${recipe.title}" />
+                    </div>
 
-            <div class="recipe-list">
-                <div class="recipe-item">
-                    <img src="/images/potato1.png" alt="감자채 볶음">
+                    <!-- 동영상 파일인 경우 -->
+                    <div th:if="${#strings.endsWith(recipe.mediaUrl, '.mp4') or #strings.endsWith(recipe.mediaUrl, '.webm')}">
+                        <video controls th:src="${recipe.mediaUrl}" th:alt="${recipe.title}">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+
                     <div class="recipe-details">
-                        <h3>감자채 볶음</h3>
-                        <p>말랑한 감자로 만든 감자채 볶음</p>
-                        <div class="ingredient-tags">
-                            <p class="ingredient-tag">감자</p>
-                            <p class="ingredient-tag">고구마</p>
-                        </div>
+                        <h3 th:text="${recipe.title}">레시피 제목</h3>
                     </div>
                     <div class="recipe-meta">
+                        <p class="rating">★ 9.99 / 10</p> <!-- 여기서 rating은 예시로 설정했습니다. -->
                         <div class="bookmark">
-                            <img class="bookmark-icon" src="/images/bookmark.png" alt="북마크 아이콘">
+                            <img th:src="${recipe.isBookmarked ? '/images/bookmark_filled.png' : '/images/bookmark.png'}"
+                                 alt="북마크 아이콘"/>
                         </div>
-                        <p class="rating">★ 9.99 / 10</p>
-                    </div>
-                </div>
-                <div class="recipe-item">
-                    <img src="/images/potato2.png" alt="감자전">
-                    <div class="recipe-details">
-                        <h3>감자전</h3>
-                        <p>말랑한 감자로 만든 감자전</p>
-                        <div class="ingredient-tags">
-                            <p class="ingredient-tag">감자</p>
-                            <p class="ingredient-tag">고구마</p>
-                        </div>
-                    </div>
-                    <div class="recipe-meta">
-                        <div class="bookmark">
-                            <img class="bookmark-icon" src="/images/bookmark.png" alt="북마크 아이콘">
-                        </div>
-                        <p class="rating">★ 9.99 / 10</p>
                     </div>
                 </div>
             </div>

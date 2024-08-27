@@ -130,8 +130,6 @@ public class TodayController {
         MongoRecipe recipe = (MongoRecipe) session.getAttribute("recipe");
         Bookmark bookmark = (Bookmark) session.getAttribute("bookmark");
         List<RecipeDTO> recipeList = (List<RecipeDTO>) session.getAttribute("bookmarkedRecipe");
-
-        System.out.println("isbook? : " + bookmark.getIsBookmark());
         if (recipe != null) {
             model.addAttribute("recipe", recipe);
             model.addAttribute("bookmark", bookmark);
