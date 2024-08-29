@@ -105,16 +105,16 @@ main {
 }
 
 .recipe-item img {
-    width: 200px;
-    height: 200px;
+    width: 230px;
+    height: 230px;
     border-radius: 8px;
     /*margin-right: 20px;*/
 }
 
 /* 동영상 파일에 대한 스타일 */
 .recipe-item video {
-    width: 200px;
-    height: 200px;
+    width: 230px;
+    height: 230px;
     border-radius: 8px;
     /*margin-right: 20px;*/
     margin-top: 0;
@@ -124,16 +124,17 @@ main {
     margin-top: 10px;
 }
 
-.recipe-details h3 {
-    font-size: 1.2em;
+.recipe-details p {
+    font-size: 1.4em;
     margin: 0;
+    font-weight: bolder;
 }
 
 .recipe-meta {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 100%;
+    width: 90%;
     margin-top: 10px;
 }
 

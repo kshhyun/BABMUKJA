@@ -80,8 +80,6 @@ public class BookmarkController {
     @PostMapping("/removeBookmark")
     public ResponseEntity<Map<String,Object>> removeBookmark(@RequestBody Bookmark bookmark) {
         String recipeId = bookmark.getRecipeId();
-        int isBookmark = bookmark.getIsBookmark();
-
         Map<String, Object> response = new HashMap<>();
 
         try {
@@ -97,6 +95,7 @@ public class BookmarkController {
             }
         } catch (Exception e) {
             e.printStackTrace();
+            System.out.println(e.getMessage());
             response.put("success", false);  // success 필드 추가
             response.put("message", "Exception 발생");
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
