@@ -32,8 +32,8 @@ public class TodayController {
     }
 
     @PostMapping("/search")
-    public String todayEatSearch(@RequestParam(required = false) String fridgeTags,
-                                 @RequestParam(required = false) String excludeTags,
+    public String todayEatSearch(@RequestParam(value = "fridgeTags", required = false) String fridgeTags,
+                                 @RequestParam(value = "excludeTags", required = false) String excludeTags,
                                  HttpSession session) {
         session.removeAttribute("fridgeItems");
         session.removeAttribute("excludedItems");
@@ -130,8 +130,6 @@ public class TodayController {
         MongoRecipe recipe = (MongoRecipe) session.getAttribute("recipe");
         Bookmark bookmark = (Bookmark) session.getAttribute("bookmark");
         List<RecipeDTO> recipeList = (List<RecipeDTO>) session.getAttribute("bookmarkedRecipe");
-
-        System.out.println("isbook? : " + bookmark.getIsBookmark());
         if (recipe != null) {
             model.addAttribute("recipe", recipe);
             model.addAttribute("bookmark", bookmark);
