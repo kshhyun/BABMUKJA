@@ -10,4 +10,5 @@ import java.util.List;
 public interface mongoRepository extends MongoRepository<MongoRecipe, String> {
     @Query("{ $text: { $search: ?0 } }")
     List<MongoRecipe> findByIngredientsText(String searchText);
+
 }
