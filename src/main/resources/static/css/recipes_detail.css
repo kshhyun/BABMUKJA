@@ -8,20 +8,20 @@
     padding: 20px;
     position: relative;
     max-width: 900px;
-    min-height: 1500px;
     margin: 0 auto;
 }
 
-.foodimg {
+.foodImg {
     position: relative;
     width: 100%;
     max-width: 900px;
     margin: 0 auto;
 }
 
-.foodimg p {
+.foodImg p {
     font-family: 'GowunDodum-Regular', serif;
     font-style: normal;
+    font-weight: bolder;
     font-size: 25px;
     margin-top: 10px;
     text-align: left;
@@ -86,7 +86,7 @@
 .details {
     font-family: 'GowunDodum-Regular', serif;
     font-style: normal;
-    position: absolute;
+    position: relative;
     margin-top : 50px;
     width: 97%;
 }
@@ -109,7 +109,6 @@
     margin-bottom: 2px;
 }
 
-/* Accordion Item */
 .details .toggle-button,
 .details .content {
     box-sizing: border-box;
@@ -124,13 +123,28 @@
 }
 
 .details .content {
-    display: none;
     background: #F5F5F5;
     width: 100%;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
+    max-height: 0;
+    opacity: 0;
 }
 
+.details .content.active {
+    max-height: 1000px; /* 컨텐츠에 따라 조정 */
+    opacity: 1;
+}
 .toggle-button {
     margin-bottom: 3px;
+}
+
+.toggle-icon {
+    transition: transform 0.3s ease-out;
+}
+
+.toggle-icon.active {
+    transform: rotate(180deg);
 }
 
 .btn {
@@ -170,4 +184,126 @@
 
 .link:hover {
     text-decoration: underline;
+}
+
+
+/*footer*/
+.footer-content {
+    padding: 20px;
+    font-family: 'GowunDodum-Regular';
+    display: block;
+}
+
+.footer-recipe-section {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.footer-recipe-section h2 {
+    text-align: left;
+    margin-bottom: 20px;
+    font-family: 'GowunDodum-Regular';
+    font-size: 25px;
+    color: #385F41;
+}
+
+.footer-recipe-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.footer-recipe-item {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    height: 170px;
+}
+
+.footer-recipe-item img,
+.footer-recipe-item video {
+    width: 160px;
+    height: 160px;
+    border-radius: 8px;
+    margin-right: 20px;
+}
+
+.footer-recipe-details {
+    flex-grow: 1;
+}
+
+.footer-recipe-details h3 {
+    font-size: 1.2em;
+    margin: 0 0 5px 0;
+}
+
+.footer-recipe-details p {
+    margin: 5px 0;
+    color: #666;
+}
+
+.footer-bookmark img {
+    width: 25px;
+    height: auto;
+    cursor: pointer;
+}
+
+.footer-ingredient-tags {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.footer-ingredient-tag {
+    background-color: #ebebeb;
+    color: #000000;
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 0.9em;
+    display: inline-block;
+    white-space: nowrap;
+}
+
+.footer-recipe-meta {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.footer-recipe-meta p {
+    margin: 0;
+}
+
+.footer-rating {
+    font-weight: bold;
+    margin-top: auto;
+}
+
+.footer-sort-options {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0;
+}
+
+.footer-sort-option {
+    margin-left: 10px;
+    cursor: pointer;
+    font-size: 14px;
+    color: #B0B0B0;
+}
+
+.footer-sort-option.active {
+    font-size: 16px;
+    color: #000000;
+}
+
+.footer-recipe-header {
+    display: flex;
+    justify-content: space-between;
 }

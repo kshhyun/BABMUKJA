@@ -2,6 +2,7 @@ package com.example.bab_recipes.Domain;
 
 import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.Setter;
 
 @Table(name = "Bookmark")
 @Entity
@@ -19,13 +20,31 @@ public class Bookmark {
 
     //mongo
     @Getter
+    @Setter
+    @Column(name = "recipeId", unique = true)
     private String recipeId;
+
+    @Getter
+    @Setter
+    @Column(name = "isBookmark", columnDefinition = "int default 1")
+    private int isBookmark;
+
+
 
     public Bookmark() {
     }
 
-    public Bookmark(Long userId, String recipeId) {
+    public Bookmark(User user, String recipeId, int isBookmark) {
         this.user = user;
         this.recipeId = recipeId;
+        this.isBookmark = isBookmark;
+    }
+
+    public Bookmark(int isBookmark) {
+        this.isBookmark = isBookmark;
+    }
+
+    public Bookmark(String id) {
+        this.recipeId = id;
     }
 }
