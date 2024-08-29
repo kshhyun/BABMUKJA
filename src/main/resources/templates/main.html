@@ -8,211 +8,117 @@
     <link rel="stylesheet" th:href="@{/css/main.css}">
 </head>
 <body>
-    <header>
-        <div class="header-container">
-            <div class="logo" id="logo">
-                <a href="/main" class="no-underline">
-                    <p>밥 묵자</p>
-                </a>
-                <img th:src="@{/images/rice_bowl.png}" alt="밥 묵자 로고">
-            </div>
-            <nav>
-                <ul class="menu">
-                    <li class="selected"><a th:href="@{/main}">레시피</a></li>
-                    <li><a th:href="@{/store}">스토어</a></li>
-                    <li><a th:href="@{/Today}">오늘 뭐 먹지?</a></li>
-                </ul>
-            </nav>
+<header>
+    <div class="header-container">
+        <div class="logo" id="logo">
+            <a href="/main" class="no-underline">
+                <p>밥 묵자</p>
+            </a>
+            <img th:src="@{/images/rice_bowl.png}" alt="밥 묵자 로고">
         </div>
-        <hr class="divider">
-        <div id="dropdown-content" class="dropdown-content">
-            <p id="user-email">bab@naver.com</p>
-            <hr>
-            <a href="#" class="edit-info">정보 수정</a>
-            <div class="dropdown-buttons">
-                <div class="combined-buttons">
-                    <a th:href="@{/bookmark}" class="bookmark-btn"><img th:src="@{/images/bookmark_n.png}" alt="책갈피 아이콘"> 책갈피</a>
-                    <a th:href="@{/logout}" class="logout-btn"><img th:src="@{/images/Logout.png}" alt="로그아웃 아이콘"> 로그아웃</a>
-                </div>
-            </div>
-        </div>
-    </header>
-
-    <div class="banner">
-        <img src="/images/banner.png">
+        <nav>
+            <ul class="menu">
+                <li class="selected"><a th:href="@{/main}">레시피</a></li>
+                <li><a th:href="@{/store}">스토어</a></li>
+                <li><a th:href="@{/Today}">오늘 뭐 먹지?</a></li>
+            </ul>
+        </nav>
     </div>
-
-    <div class="search">
-        <h1 id="recipes-title"></h1>
-        <div class="search-bar">
-            <input type="text" placeholder="검색">
+    <hr class="divider">
+    <div id="dropdown-content" class="dropdown-content">
+        <p id="user-email" th:text="${email}"></p>
+        <hr>
+        <a href="#" class="edit-info">정보 수정</a>
+        <div class="dropdown-buttons">
+            <div class="combined-buttons">
+                <a th:href="@{/bookmark}" class="bookmark-btn"><img th:src="@{/images/bookmark_n.png}" alt="책갈피 아이콘"> 책갈피</a>
+                <a th:href="@{/logout}" class="logout-btn"><img th:src="@{/images/Logout.png}" alt="로그아웃 아이콘"> 로그아웃</a>
+            </div>
         </div>
     </div>
-    
-    <div class="nav-bar">
-        <div class="nav">
-            <span class="nav-item active" data-target="all">전체</span> | 
-            <span class="nav-item" data-target="korean">한식</span> | 
-            <span class="nav-item" data-target="western">양식</span> | 
-            <span class="nav-item" data-target="chinese">중식</span> | 
-            <span class="nav-item" data-target="japanese">일식</span> | 
-            <span class="nav-item" data-target="bun">분식</span> | 
-            <span class="nav-item" data-target="asian">아시안</span> | 
-            <span class="nav-item" data-target="dessert">디저트</span> | 
-            <span class="nav-item" data-target="night">야식</span> | 
-            <span class="nav-item" data-target="ex">기타</span>
-        </div>
-    
-        <div class="content" id="all">
-            <div class="recipe-list">
-                <div class="recipe">
-                    <img src="/images/food28.png" alt="감자명란볶음">
-                    <div class="recipe-title">감자명란볶음</div>
-                    <div class="ingredient-tags">
-                        <p class="ingredient-tag">감자</p>
-                        <p class="ingredient-tag">명란젓</p>
-                        <p class="ingredient-tag">마늘</p>
-                        <p class="ingredient-tag">참기름</p>
-                    </div>
+</header>
+
+<div class="banner">
+    <img src="/images/banner.png">
+</div>
+
+<div class="search">
+    <h1 id="recipes-title"></h1>
+    <div class="search-bar">
+        <input class="search-bar" type="text" placeholder="검색">
+    </div>
+</div>
+
+<div class="content">
+    <div class="recipe-list">
+        <div th:each="recipe : ${recipes}">
+            <input type="hidden" th:value="${recipe.id}">
+            <div class="recipe">
+                <!-- 이미지 파일인 경우 -->
+                <div th:if="${#strings.endsWith(recipe.mediaUrl, '.jpg') or #strings.endsWith(recipe.mediaUrl, '.jpeg') or #strings.endsWith(recipe.mediaUrl, '.png')}">
+                    <img th:src="${recipe.mediaUrl}" th:alt="${recipe.title}" />
                 </div>
-                <div class="recipe">
-                    <img src="/images/food26.png" alt="물회">
-                    <div class="recipe-title">물회</div>
-                    <div class="ingredient-tags">
-                        <p class="ingredient-tag">광어</p>
-                        <p class="ingredient-tag">전복</p>
-                        <p class="ingredient-tag">오징어</p>
-                        <p class="ingredient-tag">고추장</p>
-                    </div>
+
+                <!-- 동영상 파일인 경우 -->
+                <div th:if="${#strings.endsWith(recipe.mediaUrl, '.mp4') or #strings.endsWith(recipe.mediaUrl, '.webm')}">
+                    <video controls th:src="${recipe.mediaUrl}" th:alt="${recipe.title}">
+                        Your browser does not support the video tag.
+                    </video>
                 </div>
-                <div class="recipe">
-                    <img src="/images/food24.png" alt="매콤새콤 쫄면">
-                    <div class="recipe-title">매콤새콤 쫄면</div>
-                    <div class="ingredient-tags">
-                        <p class="ingredient-tag">계란</p>
-                        <p class="ingredient-tag">오이</p>
-                        <p class="ingredient-tag">쫄면</p>
-                        <p class="ingredient-tag">참깨</p>
-                    </div>
-                </div>
-                <div class="recipe">
-                    <img src="/images/food89.png" alt="양지수육전골">
-                    <div class="recipe-title">양지수육전골</div>
-                    <div class="ingredient-tags">
-                        <p class="ingredient-tag">소고기양지</p>
-                        <p class="ingredient-tag">팽이버섯</p>
-                        <p class="ingredient-tag">부추</p>
-                        <p class="ingredient-tag">대파</p>
-                        <p class="ingredient-tag">양파</p>
-                    </div>
-                </div>
-                <div class="recipe">
-                    <img src="/images/food86.png" alt="고깃집 된장찌개">
-                    <div class="recipe-title">고깃집 된장찌개</div>
-                    <div class="ingredient-tags">
-                        <p class="ingredient-tag">광어</p>
-                        <p class="ingredient-tag">전복</p>
-                        <p class="ingredient-tag">오징어</p>
-                    </div>
-                </div>
-                <div class="recipe">
-                    <img src="/images/food87.png" alt="허니포테이토 그라탕">
-                    <div class="recipe-title">허니포테이토 그라탕</div>
-                    <div class="ingredient-tags">
-                        <p class="ingredient-tag">감자</p>
-                        <p class="ingredient-tag">슈레드 모차렐라 치즈</p>
-                        <p class="ingredient-tag">버터</p>
-                        <p class="ingredient-tag">파마산치즈</p>
-                    </div>
-                </div>
-                <div class="recipe">
-                    <img src="/images/food88.png" alt="단호박설기">
-                    <div class="recipe-title">단호박설기</div>
-                    <div class="ingredient-tags">
-                        <p class="ingredient-tag">단호박</p>
-                        <p class="ingredient-tag">멥쌀가루</p>
-                        <p class="ingredient-tag">설탕</p>
-                        <p class="ingredient-tag">물</p>
-                    </div>
+                <h3 th:text="${recipe.title}"></h3>
+                <div class="ingredient-tags">
+                    <p class="ingredient-tag" th:each="recipeIngredient : ${recipe.ingredients.keySet()}" th:text="${recipeIngredient}"></p>
                 </div>
             </div>
-        </div>
-        <div class="content" id="korean" style="display: none;">
-            <div class="recipe-list">
-                <div class="recipe">
-                    <img src="/images/food28.png" alt="감자명란볶음">
-                    <div class="recipe-title">감자명란볶음</div>
-                </div>
-                <div class="recipe">
-                    <img src="/images/food26.png" alt="물회">
-                    <div class="recipe-title">물회</div>
-                </div>
-                <div class="recipe">
-                    <img src="/images/food24.png" alt="매콤새콤 쫄면">
-                    <div class="recipe-title">매콤새콤 쫄면</div>
-                </div>
-                <div class="recipe">
-                    <img src="/images/food89.png" alt="양지수육전골">
-                    <div class="recipe-title">양지수육전골</div>
-                </div>
-                <div class="recipe">
-                    <img src="/images/food88.png" alt="단호박설기">
-                    <div class="recipe-title">단호박설기</div>
-                </div>
-            </div>
-        </div>
-        <div class="content" id="western" style="display: none;">
-            <div class="recipe-list">
-                <div class="recipe">
-                    <img src="/images/food87.png" alt="허니포테이토 그라탕">
-                    <div class="recipe-title">허니포테이토 그라탕</div>
-                </div>
-                <div class="recipe">
-                    <img src="/images/food25.png" alt="베이컨알리오올리오">
-                    <div class="recipe-title">베이컨알리오올리오</div>
-                </div>
-                <div class="recipe">
-                    <img src="/images/food85.png" alt="치킨마르게리타">
-                    <div class="recipe-title">치킨마르게리타</div>
-                </div>
-                <div class="recipe">
-                    <img src="/images/food84.png" alt="라따뚜이">
-                    <div class="recipe-title">라따뚜이</div>
-                </div>
-            </div>
-        </div>
-        <div class="content" id="chinese" style="display: none;">
-            <h2>중식 페이지</h2>
-            
-        </div>
-        <div class="content" id="japanese" style="display: none;">
-            <h2>일식 페이지</h2>
-            
-        </div>
-        <div class="content" id="bun" style="display: none;">
-            <h2>분식 페이지</h2>
-            
-        </div>
-        <div class="content" id="asian" style="display: none;">
-            <h2>아시안 페이지</h2>
-            
-        </div>
-        <div class="content" id="dessert" style="display: none;">
-            <h2>디저트 페이지</h2>
-            
-        </div>
-        <div class="content" id="night" style="display: none;">
-            <h2>야식 페이지</h2>
-            
-        </div>
-        <div class="content" id="ex" style="display: none;">
-            <h2>기타 페이지</h2>
-            
         </div>
     </div>
 
+</div>
 
-    <script th:src="@{/js/main.js}"></script>
-    <script th:src="@{/js/Top_ui.js}"></script>
+<div class="nav-bar">
+    <div class="nav">
+        <a class="nav-item" th:href="@{/recipes/한식}" id="default-category">한식</a> |
+        <a class="nav-item" th:href="@{/recipes/양식}">양식</a> |
+        <a class="nav-item" th:href="@{/recipes/중식}">중식</a> |
+        <a class="nav-item" th:href="@{/recipes/일식}">일식</a> |
+        <a class="nav-item" th:href="@{/recipes/분식}">분식</a> |
+        <a class="nav-item" th:href="@{/recipes/퓨전}">퓨전</a> |
+        <a class="nav-item" th:href="@{/recipes/밑반찬}">밑반찬</a> |
+        <a class="nav-item" th:href="@{/recipes/야식}">야식</a> |
+        <a class="nav-item" th:href="@{/recipes/다이어트}">다이어트</a> |
+        <a class="nav-item" th:href="@{/recipes/베이킹}">베이킹</a> |
+        <a class="nav-item" th:href="@{/recipes/채식}">채식</a>
+    </div>
+</div>
+
+<!-- 선택된 카테고리에 해당하는 레시피 리스트 -->
+<div class="content">
+    <div class="recipe-list">
+        <div class="recipe" th:each="category : ${categories}">
+            <!-- 이미지 파일인 경우 -->
+            <div th:if="${#strings.endsWith(category.mediaUrl, '.jpg') or #strings.endsWith(category.mediaUrl, '.jpeg') or #strings.endsWith(category.mediaUrl, '.png')}">
+                <img th:src="${category.mediaUrl}" th:alt="${category.title}" />
+            </div>
+
+            <!-- 동영상 파일인 경우 -->
+            <div th:if="${#strings.endsWith(category.mediaUrl, '.mp4') or #strings.endsWith(category.mediaUrl, '.webm')}">
+                <video controls th:src="${category.mediaUrl}" th:alt="${category.title}">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+            <h3 th:text="${category.title}"></h3>
+            <!-- 각 레시피의 재료를 출력 -->
+            <div class="ingredient-tags">
+                <p class="ingredient-tag" th:each="ingredient : ${category.ingredients.keySet()}" th:text="${ingredient}"></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<script th:src="@{/js/main.js}"></script>
+<script th:src="@{/js/Top_ui.js}"></script>
 </body>
 </html>
