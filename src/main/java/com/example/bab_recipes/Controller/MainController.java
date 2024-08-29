@@ -11,8 +11,8 @@ public class MainController {
         return "/main";
     }
 
-    @GetMapping("/bookmark")
-    public String bookmark() {
-        return "bookmark";
-    }
+//    @GetMapping("/bookmark")
+//    public String bookmark() {
+//        return "bookmark";
+//    }
 }
