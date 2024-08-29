@@ -27,10 +27,6 @@ public class RecipeDTO {
     @Setter
     private boolean isBookmarked;
 
-    @Getter
-    @Setter
-    private String category;
-
     public RecipeDTO(String id, String title, Map<String, String> ingredients, String mediaUrl, boolean isBookmarked) {
         this.id = id;
         this.title = title;
